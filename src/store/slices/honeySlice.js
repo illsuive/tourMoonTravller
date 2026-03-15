@@ -3,7 +3,6 @@ import manali from '../../resourse/honeyMoonPhoto/manali.jpeg'
 import hidimbaTemple from '../../resourse/honeyMoonPhoto/hidimbaTemple.jpeg'
 import kasol from '../../resourse/honeyMoonPhoto/kasol.jpeg'
 
-
 const initialState = {
   items: [
     // real data 
