@@ -36,7 +36,7 @@ const Home = () => {
           
           <div className="flex justify-center">
             <Link to="/packages" className="group bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-xl shadow-blue-500/40 active:scale-95">
-              Explore All Packages <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              love the nature <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
