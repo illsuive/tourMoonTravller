@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
   Users, Clock, Calendar, CheckCircle2, 
-  ArrowLeft, Send, ShieldCheck, Zap, Mail, Phone, User, Info
+  ArrowLeft, Send, Zap, User, Info, MapPin, 
+  ShieldCheck, Share2, Heart, Globe
 } from 'lucide-react';
 import { initiateBooking, updateUserDetails } from '../store/slices/BookingSlice.js';
 
@@ -24,7 +25,7 @@ const GroupTourDetails = () => {
     }
   }, [tour, dispatch]);
 
-  if (!tour) return <div className="py-20 text-center font-bold text-slate-400">Tour not found!</div>;
+  if (!tour) return <div className="py-20 text-center font-black text-slate-400 uppercase tracking-widest">Expedition Not Found</div>;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,74 +34,84 @@ const GroupTourDetails = () => {
 
   const handleWhatsApp = (e) => {
     e.preventDefault();
-    
-    const formDataObj = {
-      packageId: tour.id,
-      packageName: tour.title,
-      price: tour.price,
-      ...userDetails
-    };
-    console.log("Form Submitted Data:", formDataObj);
-
-    // Constructing a detailed message for Aman Thakur
+    // Fixed: Including the tour title explicitly in the message
     const message = `*GROUP EXPEDITION ENQUIRY*%0a` +
                     `--------------------------%0a` +
-                    `*Package:* ${tour.title}%0a` +
+                    `*Selected Package:* ${tour.title}%0a` +
                     `*Batch:* ${tour.nextBatch}%0a` +
+                    `*Price:* ${tour.price}%0a` +
                     `--------------------------%0a` +
                     `*Traveler:* ${userDetails?.name || 'N/A'}%0a` +
-                    `*Email:* ${userDetails?.email || 'N/A'}%0a` +
                     `*Phone:* ${userDetails?.phone || 'N/A'}%0a` +
                     `*Travel Date:* ${userDetails?.travelDate || 'N/A'}%0a` +
-                    `*Group Size:* ${userDetails?.adults || 0} Adults, ${userDetails?.children || 0} Children`;
+                    `*Adults:* ${userDetails?.adults || 1}`;
 
     window.open(`https://wa.me/919560791644?text=${message}`, '_blank');
   };
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* Hero Header */}
-      <div className="relative h-[50vh] overflow-hidden">
-        <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-        <button onClick={() => navigate(-1)} className="absolute top-8 left-8 bg-white/20 backdrop-blur-md p-3 rounded-full text-white hover:bg-white/40 transition-all">
-          <ArrowLeft size={24} />
-        </button>
-        <div className="absolute bottom-10 left-8 right-8 max-w-7xl mx-auto">
-          <span className="bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">{tour.tag}</span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mt-4">{tour.title}</h1>
-          <div className="flex flex-wrap gap-6 mt-4 text-blue-100 font-bold text-sm">
-            <span className="flex items-center gap-2"><Clock size={18}/> {tour.duration}</span>
-            <span className="flex items-center gap-2"><Users size={18}/> {tour.groupSize}</span>
-            <span className="flex items-center gap-2"><Calendar size={18}/> {tour.nextBatch}</span>
+    <div className="bg-[#fcfcfc] min-h-screen pb-20">
+      {/* Hero Section */}
+      <div className="relative h-[70vh] w-full overflow-hidden">
+        <img src={tour.image} alt={tour.title} className="w-full h-full object-cover scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fcfcfc]" />
+        
+        <div className="absolute top-8 left-0 right-0 px-8 flex justify-between items-center max-w-7xl mx-auto w-full">
+          <button onClick={() => navigate(-1)} className="bg-white/10 backdrop-blur-xl border border-white/20 p-3 rounded-2xl text-white hover:bg-white hover:text-black transition-all">
+            <ArrowLeft size={20} />
+          </button>
+        </div>
+
+        <div className="absolute bottom-12 left-0 right-0 px-8 max-w-7xl mx-auto w-full">
+          <div className="flex flex-col gap-4">
+            <span className="w-fit bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] px-5 py-2 rounded-full shadow-xl">
+              {tour.tag || "Limited Batch"}
+            </span>
+            <h1 className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none">
+              {tour.title}
+            </h1>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
-        {/* Left Section: Itinerary */}
-        <div className="lg:col-span-2 space-y-12">
+      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 mt-12">
+        
+        {/* Left Section: Highlights & Itinerary */}
+        <div className="lg:col-span-8 space-y-16">
           <section>
-            <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3"><Zap className="text-blue-600" /> Batch Highlights</h2>
+            <div className="flex items-center gap-4 mb-8">
+                <div className="h-12 w-1.5 bg-blue-600 rounded-full" />
+                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter italic">Batch Highlights</h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {['Professional Captain', 'Verified Community', 'Premium Transportation', 'Shared Accomodation'].map((perk) => (
-                <div key={perk} className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 text-slate-700 font-bold text-sm">
-                  <CheckCircle2 size={18} className="text-emerald-500" /> {perk}
+                <div key={perk} className="flex items-center gap-4 p-6 bg-white rounded-[2rem] border border-slate-100 shadow-sm">
+                  <CheckCircle2 size={20} className="text-emerald-500" />
+                  <span className="text-slate-800 font-black text-sm uppercase tracking-wide">{perk}</span>
                 </div>
               ))}
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-black text-slate-900 mb-8">Trip Itinerary</h2>
-            <div className="space-y-10">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="h-12 w-1.5 bg-blue-600 rounded-full" />
+                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter italic">The Journey</h2>
+            </div>
+            <div className="space-y-4">
               {tour.itinerary?.map((item, idx) => (
-                <div key={idx} className="relative pl-10 border-l-2 border-blue-100">
-                  <div className="absolute -left-[11px] top-0 w-5 h-5 bg-blue-600 rounded-full border-4 border-white shadow-md" />
-                  <div className="bg-slate-50 p-6 rounded-3xl">
-                    <h4 className="font-black text-blue-600 text-xs uppercase tracking-widest mb-1">Day {idx + 1}</h4>
-                    <h3 className="font-bold text-slate-900 text-lg mb-2">{item.day}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                <div key={idx} className="group flex gap-6">
+                  <div className="flex flex-col items-center">
+                    <div className="w-10 h-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black text-xs group-hover:bg-blue-600 transition-colors">
+                        0{idx + 1}
+                    </div>
+                    <div className="w-0.5 h-full bg-slate-100 group-last:bg-transparent my-2" />
+                  </div>
+                  <div className="flex-1 pb-10">
+                    <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 group-hover:shadow-2xl transition-all">
+                        <h3 className="font-black text-slate-900 text-xl mb-3">{item.day}</h3>
+                        <p className="text-slate-500 text-sm font-medium">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -108,59 +119,57 @@ const GroupTourDetails = () => {
           </section>
         </div>
 
-        {/* Right Section: Enhanced Booking Form */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-24 bg-white rounded-[2.5rem] p-8 shadow-2xl border border-slate-100">
-            <div className="mb-6">
-              <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">Package Price</p>
-              <h3 className="text-3xl font-black text-slate-900">{tour.price}</h3>
+        {/* Sidebar Form */}
+        <div className="lg:col-span-4">
+          <div className="sticky top-12 bg-slate-900 rounded-[3rem] p-1 shadow-2xl overflow-hidden">
+            <div className="bg-slate-900 text-white p-8 pb-4">
+              <p className="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-1 text-center">Enquiry For</p>
+              <h3 className="text-xl font-black text-center uppercase tracking-tight line-clamp-1">{tour.title}</h3>
             </div>
 
-            <form onSubmit={handleWhatsApp} className="p-8 space-y-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-gray-400 uppercase ml-2">Plan Name</label>
-                  <input readOnly value={tour.title} className="w-full p-4 bg-gray-50 rounded-2xl border-none text-sm font-bold text-blue-600" />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-gray-400 uppercase ml-2">Your Name</label>
+            <form onSubmit={handleWhatsApp} className="bg-white rounded-[2.8rem] p-8 space-y-5">
+                
+                {/* Fixed Package Name Input (Read Only) */}
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ml-4">Selected Expedition</label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" size={16} />
-                    <input required name="name" value={userDetails?.name || ''} onChange={handleInputChange} type="text" placeholder="Full Name" className="w-full pl-11 p-4 bg-gray-50 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-medium text-sm" />
+                    <Globe className="absolute left-5 top-1/2 -translate-y-1/2 text-blue-600" size={18} />
+                    <input 
+                      readOnly 
+                      value={tour.title} 
+                      className="w-full pl-14 p-5 bg-blue-50 border border-blue-100 rounded-3xl font-black text-sm text-blue-700 cursor-not-allowed" 
+                    />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-gray-400 uppercase ml-2">WhatsApp</label>
-                    <input required name="phone" value={userDetails?.phone || ''} onChange={handleInputChange} type="tel" placeholder="+91" className="w-full p-4 bg-gray-50 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-medium text-sm" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-gray-400 uppercase ml-2">Travel Date</label>
-                    <input required name="travelDate" value={userDetails?.travelDate || ''} onChange={handleInputChange} type="date" className="w-full p-4 bg-gray-50 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-bold text-xs" />
+                {/* User Name */}
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ml-4">Full Name</label>
+                  <div className="relative">
+                    <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                    <input required name="name" value={userDetails?.name || ''} onChange={handleInputChange} type="text" placeholder="Your Name" className="w-full pl-14 p-5 bg-slate-50 rounded-3xl focus:ring-2 focus:ring-blue-500 outline-none font-bold text-sm" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-gray-400 uppercase ml-2">Adults</label>
-                    <input required name="adults" value={userDetails?.adults || 2} onChange={handleInputChange} type="number" min="1" className="w-full p-4 bg-gray-50 rounded-2xl outline-none font-bold text-sm" />
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-slate-400 uppercase ml-4">WhatsApp No</label>
+                    <input required name="phone" value={userDetails?.phone || ''} onChange={handleInputChange} type="tel" placeholder="+91" className="w-full p-5 bg-slate-50 rounded-3xl focus:ring-2 focus:ring-blue-500 outline-none font-bold text-sm" />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-gray-400 uppercase ml-2">Children</label>
-                    <input name="children" value={userDetails?.children || 0} onChange={handleInputChange} type="number" min="0" className="w-full p-4 bg-gray-50 rounded-2xl outline-none font-bold text-sm" />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-slate-400 uppercase ml-4">Preferred Date</label>
+                    <input required name="travelDate" value={userDetails?.travelDate || ''} onChange={handleInputChange} type="date" className="w-full p-5 bg-slate-50 rounded-3xl focus:ring-2 focus:ring-blue-500 outline-none font-bold text-sm" />
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-5 rounded-[2rem] flex items-center justify-center gap-3 transition-all active:scale-95 shadow-xl shadow-slate-200 mt-4">
-                  <Send size={20} /> Request Details
+                <button type="submit" className="w-full bg-blue-600 hover:bg-slate-900 text-white font-black py-6 rounded-3xl flex items-center justify-center gap-3 transition-all active:scale-95 shadow-xl shadow-blue-500/20 mt-4 group">
+                  <Send size={18} /> 
+                  <span className="uppercase tracking-widest text-xs">Confirm {tour.price}</span>
                 </button>
 
-                <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100 flex gap-3 mt-4">
-                  <Info className="text-orange-500 shrink-0" size={16} />
-                  <p className="text-[10px] text-orange-800 font-bold leading-tight uppercase">
-                    Our team will contact you within 24 hours.
-                  </p>
+                <div className="flex items-center justify-center gap-2 py-2">
+                    <ShieldCheck size={14} className="text-blue-600" />
+                    <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Secure Reservation</p>
                 </div>
               </form>
           </div>

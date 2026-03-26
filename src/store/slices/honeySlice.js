@@ -1,17 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import manali from '../../resourse/honeyMoonPhoto/manali.jpeg'
-import hidimbaTemple from '../../resourse/honeyMoonPhoto/hidimbaTemple.jpeg'
-import kasol from '../../resourse/honeyMoonPhoto/kasol.jpeg'
+import manali from '../../resourse/honeyMoonPhoto/manali.jpeg';
+import hidimbaTemple from '../../resourse/honeyMoonPhoto/hidimbaTemple.jpeg';
+import kasol from '../../resourse/honeyMoonPhoto/kasol.jpeg';
 
 const initialState = {
   items: [
-    // real data 
     {
       id: "moon-traveller-manali",
       title: "Romantic Manali Retreat",
-      duration: "4N/5D",
-      price: "Price on Request",
-      tag: "Honeymoon Special",
+      duration: "5N/6D",
+      price: "₹8,499/per person",
+      tag: "till 15th April",
       image: hidimbaTemple,
       description: "A curated 4-day journey for couples featuring the best of Manali, from the spiritual Hadimba Temple to the snowy heights of Solang Valley and Atal Tunnel.",
       perks: [
@@ -21,64 +20,71 @@ const initialState = {
         "Pvt Car for Local Sightseeing"
       ],
       itinerary: [
-        {
-          "day": "Day 1",
-          "desc": "Departure from Delhi via Volvo (6:30 PM) for an overnight journey to the mountains."
-        },
-        {
-          day: "Day 2",
-          desc: "Arrival in Manali, check-in, and local tour: Hadimba Temple, Manali Gompa, Tibetan Monastery, and shopping at Mall Road."
-        },
-        {
-          day: "Day 3",
-          desc: "Full day excursion to Solang Valley, Atal Tunnel, and Sissu. Experience snow adventure sports like paragliding and zorbing."
-        },
-        {
-          day: "Day 4",
-          desc: "Explore Kullu: Visit Vaishno Devi Mata Mandir, National Park, and Naggar Castle. Evening departure for Delhi."
-        },
-        {
-          day: "Day 5",
-          desc: "Early morning arrival at Delhi. Tour ends with sweet memories."
-        }
-  ]
-
+        { day: "Day 1", desc: "Departure from Delhi via Volvo (6:30 PM) for an overnight journey to the mountains." },
+        { day: "Day 2", desc: "Arrival in Manali, check-in, and local tour: Hadimba Temple, Manali Gompa, Tibetan Monastery, and shopping at Mall Road." },
+        { day: "Day 3", desc: "Full day excursion to Solang Valley, Atal Tunnel, and Sissu. Experience snow adventure sports like paragliding and zorbing." },
+        { day: "Day 4", desc: "Explore Kullu: Visit Vaishno Devi Mata Mandir, National Park, and Naggar Castle." },
+        { day: "Day 5", desc: "Checkout hotel at 10am, now the time is yours till evening, then departure for Delhi." },
+        { day: "Day 6", desc: "Early morning arrival at Delhi. Tour ends with sweet memories." }
+      ]
+    }, // Fixed: Added closing brace and comma here
+    {
+      id: "manali-honeymoon-starter",
+      title: "Manali Romantic Escape",
+      duration: "4N/5D",
+      price: "₹6,999/per person",
+      tag: "Honeymoon Package 1",
+      image: manali,
+      description: "A budget-friendly yet romantic getaway to the heart of the Himalayas, featuring essential honeymoon treats and iconic Manali sightseeing.",
+      perks: [
+        "TRAVLLER",
+        "24/7 ASSIST",
+        "MAP Plan (2 Breakfast & 2 Dinner)"
+      ],
+      itinerary: [
+        { day: "Day 1", desc: "Evening departure from Delhi for an overnight journey to Manali." },
+        { day: "Day 2", desc: "Arrival & Local Sightseeing: Hidimba Temple, Vashisht Temple, Jogini Waterfall, Van Vihar, Old Manali Cafes, and Mall Road." },
+        { day: "Day 3", desc: "Snow Exploration: Visit Solang Valley, Atal Tunnel, and Sissu. Enjoy snow activities at own cost." },
+        { day: "Day 4", desc: "Kullu Adventure: Visit Vaishno Devi Temple, National Park, and Naggar Castle. Optional Paragliding/Rafting. Evening departure for Delhi." },
+        { day: "Day 5", desc: "Morning arrival in Delhi. Tour ends with sweet memories." }
+      ]
     },
     {
-    id: "manali-honeymoon-starter",
-    title: "Manali Romantic Escape",
-    duration: "4N/5D",
-    price: "₹6,999",
-    tag: "Honeymoon Package 1",
-    image: manali,
-    description: "A budget-friendly yet romantic getaway to the heart of the Himalayas, featuring essential honeymoon treats and iconic Manali sightseeing.",
-    perks: [
-      "Flower Bed Decoration",
-      "Candle Light Dinner & Cake",
-      "2 Glasses of Kesar Milk",
-      "MAP Plan (2 Breakfast & 2 Dinner)"
-    ],
-    itinerary: [
-      { day: "Day 1", desc: "Evening departure from Delhi for an overnight journey to Manali." },
-      { day: "Day 2", desc: "Arrival & Local Sightseeing: Hidimba Temple, Vashisht Temple, Jogini Waterfall, Van Vihar, Old Manali Cafes, and Mall Road." },
-      { day: "Day 3", desc: "Snow Exploration: Visit Solang Valley, Atal Tunnel, and Sissu. Enjoy snow activities at own cost." },
-      { day: "Day 4", desc: "Kullu Adventure: Visit Vaishno Devi Temple, National Park, and Naggar Castle. Optional Paragliding/Rafting. Evening departure for Delhi." },
-      { day: "Day 5", desc: "Morning arrival in Delhi. Tour ends with sweet memories." }
-    ]
+      id: "KASHMIR_files",
+      title: "kashmir:heaven in india",
+      duration: "4N/5D",
+      price: "₹13,499/per person",
+      tag: "honeymonn in kashmir1",
+      image: manali,
+      description: "A budget-friendly yet romantic getaway to the heart of the Himalayas, featuring essential honeymoon treats and iconic Manali sightseeing.",
+      perks: [
+        "24/7 COSTOMER SUPPORT",
+        "PRIVATE Car",
+        "1HOUR Shikara Ride",
+        "3N in Hotel & 1N in Houseboat  ",
+        "MAP Plan (4 Breakfast & 4 Dinner)"
+      ],
+      itinerary: [
+        { day: "Day 1", desc: "Arrival at Srinagar Airport/Railway Station & Local Sightseeing." },
+        { day: "Day 2", desc: "Srinagar to Sonamarg to Srinagar." },
+        { day: "Day 3", desc: "Srinagar to Gulmarg to Srinagar." },
+        { day: "Day 4", desc: "Srinagar to Pahalgam to Srinagar." },
+        { day: "Day 5", desc: "Departure transfer to Srinagar Airport/Railway Station." }
+      ]
     },
     {
       id: "kasol-manikaran-honeymoon",
       title: "Kasol & Manikaran Romantic Retreat",
       duration: "5N/6D",
-      price: "₹7,999",
+      price: "₹7,999/per person",
       tag: "Extended Nature Tour",
-    image:  kasol,
+      image: kasol,
       description: "An extended romantic journey covering the best of Manali plus the serene vibes of Kasol and the spiritual warmth of Manikaran hot springs.",
       perks: [
         "Kasol & Manikaran Excursion",
-        "Full Honeymoon Inclusions (Cake/Decor/Dinner)",
+        "24/7 ASSIST",
         "MAP Meal Plan (3 Breakfast & 3 Dinner)",
-        "Private Car for Sightseeing"
+        "TRAVLLER"
       ],
       itinerary: [
         { day: "Day 1", desc: "Evening departure from Delhi to Manali (Overnight journey)." },
@@ -104,7 +110,7 @@ const honeymoonSlice = createSlice({
       state.selectedPackage = null;
     }
   }
-});
+}); 
 
 export const { setSelectedHoneymoon, clearSelection } = honeymoonSlice.actions;
 export default honeymoonSlice.reducer;

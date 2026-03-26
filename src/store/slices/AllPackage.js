@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import kheer from '../../resourse/kheer.avif';
+import kullurafting from '../../resourse/kullurafting.jpg';
+import jimcorbet from '../../resourse/jimcorbet.webp';
 const initialState = {
   items: [
     {
       id: 'kasol-kheerganga',
       title: 'Kasol & Kheerganga Trek',
       duration: '3N/4D',
-      price: '₹6,999',
+      price: 'N/A',
       tag: 'Backpacker',
-      image: 'https://images.unsplash.com/photo-1590502160462-099419105479',
+      image: kheer,
       category: 'Trekking',
       description: 'Experience the magic of Manali with a stay in a premium snow-view suite.',
       itinerary: [
@@ -19,11 +21,11 @@ const initialState = {
     },
     {
       id: 'rishikesh-rafting',
-      title: 'Rishikesh Rafting Camp',
+      title: 'kullu rafting camp',
       duration: '2N/3D',
-      price: '₹4,500',
+      price: 'N/A',
       tag: 'Weekend',
-      image: 'https://images.unsplash.com/photo-1530713707191-910406609914',
+      image: kullurafting ,
       category: 'Adventure',
       description: 'Enjoy the thrill of rafting in the Ganges with expert guides.',
        itinerary: [
@@ -36,9 +38,9 @@ const initialState = {
       id: 'corbett-wildlife',
       title: 'Corbett Jungle Safari',
       duration: '2N/3D',
-      price: '₹8,500',
+      price: 'N/A',
       tag: 'Wildlife',
-      image: 'https://images.unsplash.com/photo-1581012733671-5085e64814c7',
+      image: jimcorbet,
       category: 'Nature',
       description: 'Explore the rich biodiversity of Corbett National Park with expert guides.',
       itinerary: [
