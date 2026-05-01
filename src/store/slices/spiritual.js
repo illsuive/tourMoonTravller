@@ -1,4 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import kedarnath from '../../resourse/kedarnath.jpeg'
+import tugnath from '../../resourse/tugnath.jpeg'
+import doDham from '../../resourse/doDham.jpeg'
+import charDham from '../../resourse/charDham.jpeg'
 
 const initialState = {
   items: [
@@ -58,12 +62,56 @@ const initialState = {
       ]
     },
     {
+      id: "TUNGNATH-CHANDRASHILA",
+      title: "TUNGNATH-CHANDRASHILA",
+      duration: "2N/3D",
+      price: "₹4,999/per person",
+      tag: "HIGHEST TEMPLE OF SHIVA",
+      image: tugnath,
+      description: "Walk the ancient lanes of the world's oldest living city. Experience the soul-stirring Ganga Aarti and sacred temples.",
+      perks: [
+        "2 NIGHT stay ",
+        "pickup/drop AKSHARDHAM TEMPLE",
+        "Pure Veg Meal Plan(breakfast and dinner)"
+      ],
+      itinerary: [
+        { day: "Day 0", desc: "DELHI TO CHOPTA"},
+        { day: "Day 1", desc: "CHOPTA SIGHTSEEING"},
+        { day: "Day 2", desc: "TREK TO TUNGNATH & CHANDRASHILA"},
+        { day: "Day 3", desc: "CHOPTA TO DEORIATAL LATER BACK TO DELHI"},
+        { day: "Day 4", desc: "REACH DELHI"}
+      ]
+    },
+    {
+      id: "KEDARNATH-TUNGNATH-CHANDRASHILA",
+      title: "KEDARNATH-TUNGNATH-CHANDRASHILA",
+      duration: "3N/4D",
+      price: "₹7,999/per person",
+      tag: "SOUL OF SPRITUALITY",
+      image: kedarnath,
+      description: "Walk the ancient lanes of the world's oldest living city. Experience the soul-stirring Ganga Aarti and sacred temples.",
+      perks: [
+        "3 NIGHT stay ",
+        "pickup/drop AKSHARDHAM TEMPLE",
+        "Pure Veg Meal Plan(3 breakfast and 3 dinner)"
+      ],
+      itinerary: [
+        
+        { day: "Day 0", desc: "DELHI TO GUPTAKASHI/PHATA"},
+        { day: "Day 1", desc: "REACH GUPTAKASHI/PHAT"},
+        { day: "Day 2", desc: "TREK TO KEDARNATH"},
+        { day: "Day 3", desc: "KEDARNATH TO SARI/CHOPTA"},
+        { day: "Day 4", desc: "SARI/CHOPTA TO DELHI"},
+        { day: "Day 5", desc: "REACH DELHI"}
+      ]
+    },
+    {
       id: "Dordham-yatra-express",
-      title: "Do Dham Yatr",
+      title: "Do Dham Yatra",
       duration: "9N/10D",
       price: "₹17,999/per person",
       tag: "Himalayan Pilgrimage",
-      image: "https://images.unsplash.com/photo-1657215753692-408aca0b2934?q=80&w=1036&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: doDham,
       description: "A spiritually charged journey to Kedarnath and Badrinath, the holiest shrines in the Garhwal Himalayas.",
       perks: [
         "Kedarnath-Badrinath",
@@ -87,7 +135,7 @@ const initialState = {
       duration: "9N/10D",
       price: "₹31,999/per person",
       tag: "Himalayan Pilgrimage",
-      image: "https://images.unsplash.com/photo-1657215753692-408aca0b2934?q=80&w=1036&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: charDham,
       description: "A spiritually charged journey to Kedarnath and Badrinath, the holiest shrines in the Garhwal Himalayas.",
       perks: [
         "Yamunotri-Gangotri-Kedarnath-Badrinath",
